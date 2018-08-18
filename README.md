@@ -12,23 +12,23 @@ $ go build -o libtest.so -buildmode=c-shared pyrefs
 
 ## Tests
 
-To main-based test:
+To Golang-based test:
 ```
 $ export GOPATH=$(pwd) 
 $ go run src/pyrefs/function.go
 ```
 
-To build C-based test:
+To C-based test:
 ```
 clang -o goinc.test goin.c -L. -ltest
 ```
 
-In MacOS-10.12, to build C-based test:
+In MacOS-10.12, to C-based test:
 ```
 clang -o goinc.test goin.c -L. -L/usr/lib -ltest
 ```
 
-To build Python-based test:
+To Python-based test:
 ```
 python goin.py
 ```
