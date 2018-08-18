@@ -61,11 +61,9 @@ In this case ```restype``` is a pointer type (by Numpy doc):
 
 The appropriated type in Golang to treat it is ```unsafe.Pointer```.
 
-However yet has a problem: slice pointer like result. This violate rule 2 of **Rules for passing pointers between Go and C**:
+However yet has a problem: slice pointer like result. This violate rule 2 of ![**Rules for passing pointers between Go and C**](https://github.com/golang/proposal/blob/master/design/12416-cgo-pointers.md):
 
-> 2. C code may not keep a copy of a Go pointer after the call returns.
-> 
-> Source: https://github.com/golang/proposal/blob/master/design/12416-cgo-pointers.md
+> C code may not keep a copy of a Go pointer after the call returns.
 
 The solution is to convert ```unsafe.Pointer``` to ```uintptr```. 
 
