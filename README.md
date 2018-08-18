@@ -35,7 +35,7 @@ python goin.py
 
 ## About problem:
 
-The developer need call a golang function from python code passing float and int type params, but occour an unkwnow error.
+The developer needs call a golang function from python passing float and int type params and returning an slice, but occour an unkwnow error.
 
 Source: https://stackoverflow.com/questions/51845092/how-to-return-an-array-from-golang-to-python-using-ctypes/51912417
 
@@ -46,7 +46,7 @@ The developer used the code follow to set ```restype``` to lib:
 
     lib.Function.restype = ndpointer(dtype = c_double, shape = (N,))
 
-In this case ```restype``` is a pointer type:
+In this case ```restype``` is a pointer type (by Numpy doc):
 
 > **def ndpointer(dtype=None, ndim=None, shape=None, flags=None)** 
 > 
@@ -56,10 +56,8 @@ In this case ```restype``` is a pointer type:
 > 
 > klass : ndpointer type object
 > 
->   >A type object, which is an `_ndtpr` instance containing  
->   >dtype, ndim, shape and flags information.
->
-> *[others texts]*
+> A type object, which is an `_ndtpr` instance containing dtype, ndim, shape and flags information.
+
 
 The appropriated type in Golang to treat it is ```unsafe.Pointer```.
 
